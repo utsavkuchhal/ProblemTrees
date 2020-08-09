@@ -1,0 +1,24 @@
+    public static ArrayList <Integer> diagonalSum(Node root) 
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        int size, sum;
+        while(!queue.isEmpty()){
+            sum = 0;
+            size = queue.size();
+            while(size > 0){
+                Node temp = queue.remove();
+                while(temp != null){
+                    sum = sum + temp.data;
+                    if(temp.left != null){
+                        queue.add(temp.left);
+                    }
+                    temp = temp.right;
+                }
+                size--;
+            }
+            list.add(sum);
+        }
+        return list;
+    }
